@@ -14,16 +14,12 @@ This will add the gem as a runtime dependency. Robin automatically loads its ser
 
 ## Configuration
 
-By default, Robin namespaces metrics with `robin.sidekiq`. If that's
-not your cup of tea, you can reload the middleware with custom options.
-
-Here's an example:
+You will need to add the code below to your app. In a typical Rails app, this would go into an initializer.
 
 ```ruby
 # config/initializers/robin.rb
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.remove Robin::Sidekiq::QueueStats
     chain.add Robin::Sidekiq::QueueStats, namespace: 'mycompany.sidekiq'
   end
 end
@@ -31,7 +27,7 @@ end
 
 ### Available options
 
-- `namespace`: the string each metric is prefixed with
+- `namespace`: the string each metric is prefixed with. Defaults to `robin.sidekiq`.
 
 ## Metrics
 
