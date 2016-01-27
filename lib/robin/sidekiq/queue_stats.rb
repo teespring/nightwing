@@ -2,7 +2,7 @@ require 'librato-rack'
 
 module Robin
   module Sidekiq
-    class Middleware
+    class QueueStats
       attr_reader :namespace, :previous_stats
 
       def initialize(options = {})

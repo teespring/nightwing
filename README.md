@@ -23,8 +23,8 @@ Here's an example:
 # config/initializers/robin.rb
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.remove Robin::Sidekiq::Middleware
-    chain.add Robin::Sidekiq::Middleware, namespace: 'mycompany.sidekiq'
+    chain.remove Robin::Sidekiq::QueueStats
+    chain.add Robin::Sidekiq::QueueStats, namespace: 'mycompany.sidekiq'
   end
 end
 ```
