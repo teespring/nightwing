@@ -27,7 +27,7 @@ module Robin
           capture_snapshot!
 
           Librato.increment "robin.sidekiq.measured"
-        rescue => e
+        rescue
           Librato.increment "robin.failed"
         end
 
