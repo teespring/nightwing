@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.summary     = "Librato + Sidekiq"
   s.description = "Superior Librato metrics gathering for Sidekiq"
   s.authors     = ["Chris Ledet"]
-  s.email       = 'chris.ledet@teespring.com'
+  s.email       = "chris.ledet@teespring.com"
   s.files       = `git ls-files`.split
   s.homepage    = "https://github.com/teespring/robin"
   s.license     = "MIT"

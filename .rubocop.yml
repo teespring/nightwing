@@ -1,0 +1,8 @@
+Metrics/AbcSize:
+  Max: 35
+StringLiterals:
+  EnforcedStyle: double_quotes
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/MethodLength:
+  Enabled: false
