@@ -35,19 +35,15 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 
 - `robin.sidekiq.retries`: number of jobs to be retried
 - `robin.sidekiq.scheduled`: number of jobs scheduled to run
-- `robin.sidekiq.enqueued`: number of jobs enqueued since last report
-- `robin.sidekiq.processed`: number of jobs processed since last report
-- `robin.sidekiq.failed`: number of jobs failed since last report
+- `robin.sidekiq.processed`: number of times middleware called
+- `robin.sidekiq.failed`: number of jobs that raised an error
 
 ### Queue specific
 
 - `robin.sidekiq.<queue>.size`: depth for a given queue
 - `robin.sidekiq.<queue>.latency`: latency for given queue¹
-
-### Robin specific
-
-- `robin.sidekiq.measured`: number of times middleware was called
-- `robin.sidekiq.failed`: number of failures caused by middleware
+- `robin.sidekiq.<queue>.processed`: number of times middleware called for given queue
+- `robin.sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
 
 ## Additional resources
 
