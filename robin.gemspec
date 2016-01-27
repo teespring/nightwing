@@ -10,6 +10,8 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/teespring/robin"
   s.license     = "MIT"
 
-  s.add_runtime_dependency 'sidekiq',      '~> 2.17', '>= 2.17.0'
-  s.add_runtime_dependency 'librato-rack', '~> 0.4',  '>= 0.4.0'
+  s.add_runtime_dependency "sidekiq",      "~> 2.17", ">= 2.17.0"
+  s.add_runtime_dependency "librato-rack", "~> 0.4",  ">= 0.4.0"
+
+  s.add_development_dependency "rubocop", "~> 0.36"
 end
