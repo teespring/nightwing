@@ -7,6 +7,7 @@ module Robin
 
       def initialize(options = {})
         @namespace = options.fetch(:namespace, 'robin.sidekiq')
+        @previous_stats = {}
 
         capture_snapshot!
       end
