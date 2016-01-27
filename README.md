@@ -4,13 +4,34 @@ Sidekiq metrics gathering middleware
 
 ## Installation
 
-Inside your Gemfile
+Inside your Gemfile, add the following line:
 
 ```Gemfile
 gem 'robin', github: 'teespring/robin'
 ```
 
-The middleware will get added Sidekiq's middleware chain. It happens automatically when the gem gets loaded.
+This will add the gem as a runtime dependency. Robin automatically loads its server middleware into Sidekiq.
+
+## Configuration
+
+By default, Robin namespaces metrics with `robin.sidekiq`. If that's
+not your cup of tea, you can reload the middleware with custom options.
+
+Here's an example:
+
+```ruby
+# config/initializers/robin.rb
+Sidekiq.configure_server do |config|
+  config.server_middleware do |chain|
+    chain.remove Robin::Sidekiq::Middleware
+    chain.add Robin::Sidekiq::Middleware, namespace: 'mycompany.sidekiq'
+  end
+end
+```
+
+### Available options
+
+- `namespace`: the string each metric is prefixed with
 
 ## Metrics
 
