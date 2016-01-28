@@ -45,6 +45,4 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `robin.sidekiq.<queue>.processed`: number of times middleware called for given queue
 - `robin.sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
 
-## Additional resources
-
 ¹: the difference between now and when the oldest job was enqueued (given in seconds)
