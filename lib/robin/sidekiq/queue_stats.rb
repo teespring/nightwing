@@ -28,7 +28,7 @@ module Robin
         Librato.measure "#{queue_namespace}.latency", sidekiq_queue.latency
         Librato.increment "#{queue_namespace}.processed"
 
-        yield if block_given?
+        yield
       rescue => e
         Librato.increment "#{namespace}.failed"
         Librato.increment "#{queue_namespace}.failed"
