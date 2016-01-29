@@ -14,7 +14,7 @@ module Robin
       ##
       # Sends Sidekiq metrics to Librato then yields
       #
-      # @param [Sidekiq::Worker] _worker
+      # @param [Sidekiq::Worker] worker
       #   The worker the job belongs to.
       #
       # @param [Hash] _msg
@@ -22,7 +22,7 @@ module Robin
       #
       # @param [String] queue
       #   The current queue.
-      def call(_worker, _msg, queue)
+      def call(worker, _msg, queue)
         Librato.measure "#{namespace}.retries", retries.size
         Librato.measure "#{namespace}.scheduled", scheduled.size
         Librato.increment "#{namespace}.processed"
@@ -34,10 +34,15 @@ module Robin
         Librato.measure "#{queue_namespace}.latency", sidekiq_queue.latency
         Librato.increment "#{queue_namespace}.processed"
 
+        # worker specific
+        worker_namespace = metrics.for(queue: queue, worker: worker)
+        Librato.increment "#{worker_namespace}.processed"
+
         yield if block_given?
       rescue e
         Librato.increment "#{namespace}.failed"
-        Librato.increment "#{queue_namespace}failed"
+        Librato.increment "#{queue_namespace}.failed"
+        Librato.increment "#{worker_namespace}.failed"
         raise e
       end
 

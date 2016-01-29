@@ -46,3 +46,8 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `robin.sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
 
 ¹: the difference between now and when the oldest job was enqueued (given in seconds)
+
+### Worker specific
+
+- `robin.sidekiq.<queue>.<worker>.processed`: number of times middleware called for given worker
+- `robin.sidekiq.<queue>.<worker>.failed`: number of jobs in given worker that raised an error
