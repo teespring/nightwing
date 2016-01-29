@@ -1,8 +1,12 @@
+AllCops:
+  TargetRubyVersion: 2.3
 Metrics/AbcSize:
   Max: 35
 StringLiterals:
   EnforcedStyle: double_quotes
 Style/FrozenStringLiteralComment:
   Enabled: false
-Style/MethodLength:
+Metrics/MethodLength:
   Enabled: false
+Metrics/LineLength:
+  Max: 120
