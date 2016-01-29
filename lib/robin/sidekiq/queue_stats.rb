@@ -29,18 +29,23 @@ module Robin
 
         # queue specific
         sidekiq_queue = ::Sidekiq::Queue.new(queue)
-        Librato.measure "#{namespace}.#{queue}.size", sidekiq_queue.size
-        Librato.measure "#{namespace}.#{queue}.latency", sidekiq_queue.latency
-        Librato.increment "#{namespace}.#{queue}.processed"
+        queue_namespace = metrics.for(queue: queue)
+        Librato.measure "#{queue_namespace}.size", sidekiq_queue.size
+        Librato.measure "#{queue_namespace}.latency", sidekiq_queue.latency
+        Librato.increment "#{queue_namespace}.processed"
 
         yield if block_given?
       rescue e
         Librato.increment "#{namespace}.failed"
-        Librato.increment "#{namespace}.#{queue}failed"
+        Librato.increment "#{queue_namespace}failed"
         raise e
       end
 
       private
+
+      def metrics
+        @_metrics ||= Metric.new(namespace)
+      end
 
       def retries
         @_retries ||= ::Sidekiq::RetrySet.new
