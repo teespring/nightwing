@@ -33,7 +33,7 @@ module Robin
         Librato.increment "#{worker_namespace}.processed"
 
         yield if block_given?
-      rescue e
+      rescue => e
         Librato.increment "#{namespace}.failed"
         Librato.increment "#{queue_namespace}.failed"
         Librato.increment "#{worker_namespace}.failed"
