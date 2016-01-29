@@ -4,13 +4,7 @@ module Robin
   module Sidekiq
     ##
     # Sidekiq server middleware for measuring Sidekiq stats
-    class QueueStats
-      attr_reader :namespace
-
-      def initialize(options = {})
-        @namespace = options.fetch(:namespace, "robin.sidekiq")
-      end
-
+    class QueueStats < Base
       ##
       # Sends Sidekiq metrics to Librato then yields
       #
@@ -47,10 +41,6 @@ module Robin
       end
 
       private
-
-      def metrics
-        @_metrics ||= Metric.new(namespace)
-      end
 
       def retries
         @_retries ||= ::Sidekiq::RetrySet.new
