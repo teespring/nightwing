@@ -1,13 +1,6 @@
 require "rspec"
 require "robin/sidekiq/metric"
 
-class CoolWorker; end
-
-module App
-  class AwesomeWorker
-  end
-end
-
 describe Robin::Sidekiq::Metric do
   subject { described_class.new("robin") }
 
@@ -17,12 +10,12 @@ describe Robin::Sidekiq::Metric do
   end
 
   it "returns name for worker metric" do
-    metric_name = subject.for(queue: "default", worker: CoolWorker.new)
+    metric_name = subject.for(queue: "default", worker: "CoolWorker")
     expect(metric_name).to eq("robin.default.cool_worker")
   end
 
   it "returns name for module worker metric" do
-    metric_name = subject.for(queue: "default", worker: App::AwesomeWorker.new)
+    metric_name = subject.for(queue: "default", worker: "App::AwesomeWorker")
     expect(metric_name).to eq("robin.default.app_awesome_worker")
   end
 end

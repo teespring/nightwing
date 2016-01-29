@@ -35,7 +35,7 @@ module Robin
         Librato.increment "#{queue_namespace}.processed"
 
         # worker specific
-        worker_namespace = metrics.for(queue: queue, worker: worker)
+        worker_namespace = metrics.for(queue: queue, worker: worker.class)
         Librato.increment "#{worker_namespace}.processed"
 
         yield if block_given?
