@@ -28,15 +28,10 @@ module Robin
         Librato.measure "#{queue_namespace}.latency", sidekiq_queue.latency
         Librato.increment "#{queue_namespace}.processed"
 
-        # worker specific
-        worker_namespace = metrics.for(queue: queue, worker: worker.class)
-        Librato.increment "#{worker_namespace}.processed"
-
         yield if block_given?
       rescue => e
         Librato.increment "#{namespace}.failed"
         Librato.increment "#{queue_namespace}.failed"
-        Librato.increment "#{worker_namespace}.failed"
         raise e
       end
 
