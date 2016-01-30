@@ -20,6 +20,7 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     connection_pool (2.2.0)
+    diff-lcs (1.2.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     hetchy (1.0.0)
@@ -42,6 +43,19 @@ GEM
     redis (3.2.2)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.1)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     rubocop (0.36.0)
       parser (>= 2.3.0.0, < 3.0)
       powerpack (~> 0.1)
@@ -64,6 +78,7 @@ PLATFORMS
 
 DEPENDENCIES
   robin!
+  rspec (~> 3.4.0)
   rubocop (~> 0.36)
 
 BUNDLED WITH
