@@ -1,3 +1,5 @@
 test:
   pre:
     - bundle exec rubocop
+  override:
+    - bundle exec rspec
