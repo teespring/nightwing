@@ -1,3 +1,7 @@
+require "librato-rack"
+require "sidekiq"
+require "robin/metric"
+
 module Robin
   module Sidekiq
     class Base
@@ -10,7 +14,7 @@ module Robin
       private
 
       def metrics
-        @_metrics ||= Metric.new(namespace)
+        @_metrics ||= Robin::Metric.new(namespace)
       end
     end
   end

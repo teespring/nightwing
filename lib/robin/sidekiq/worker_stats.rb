@@ -1,5 +1,3 @@
-require "librato-rack"
-
 module Robin
   module Sidekiq
     class WorkerStats < Base

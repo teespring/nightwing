@@ -1,7 +1,7 @@
 require "rspec"
-require "robin/sidekiq/metric"
+require "robin/metric"
 
-describe Robin::Sidekiq::Metric do
+describe Robin::Metric do
   subject { described_class.new("robin") }
 
   it "returns name for queue metric" do
