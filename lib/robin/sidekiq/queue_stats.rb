@@ -31,7 +31,7 @@ module Robin
 
         if exception
           Librato.increment "#{queue_namespace}.failed"
-          raise e
+          raise exception
         end
       end
     end

@@ -1,7 +1,7 @@
 module Robin
   module Sidekiq
     class WorkerStats < Base
-      def call(worker_class, job, queue, redis_pool)
+      def call(worker_class, _job, queue, _redis_pool)
         exception = nil
         worker_namespace = metrics.for(queue: queue, worker: worker_class)
 
@@ -15,6 +15,7 @@ module Robin
 
         if exception
           Librato.increment "#{worker_namespace}.failed"
+          raise exception
         end
       end
     end
