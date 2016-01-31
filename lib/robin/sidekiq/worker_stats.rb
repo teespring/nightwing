@@ -19,6 +19,8 @@ module Robin
           Librato.increment "#{worker_namespace}.failed"
           raise exception
         end
+
+        Librato.increment "#{worker_namespace}.finished"
       end
     end
   end
