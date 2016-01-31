@@ -1,3 +1,5 @@
+require "robin/sidekiq/base"
+
 module Robin
   module Sidekiq
     ##
