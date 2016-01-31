@@ -21,9 +21,9 @@ module Robin
         sidekiq_queue = ::Sidekiq::Queue.new(queue)
         queue_namespace = metrics.for(queue: queue)
 
-        Librato.measure "#{queue_namespace}.size", sidekiq_queue.size
-        Librato.measure "#{queue_namespace}.latency", sidekiq_queue.latency
-        Librato.increment "#{queue_namespace}.processed"
+        client.measure "#{queue_namespace}.size", sidekiq_queue.size
+        client.measure "#{queue_namespace}.latency", sidekiq_queue.latency
+        client.increment "#{queue_namespace}.processed"
 
         begin
           yield
@@ -32,7 +32,7 @@ module Robin
         end
 
         if exception
-          Librato.increment "#{queue_namespace}.failed"
+          client.increment "#{queue_namespace}.failed"
           raise exception
         end
       end

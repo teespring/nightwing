@@ -7,8 +7,8 @@ describe Robin::Sidekiq::WorkerStats do
   describe "#call" do
     context "when everything just works" do
       it "increments process count" do
-        expect(Librato).to receive(:increment).with("robin.sidekiq.default.my_worker.processed")
-        expect(Librato).to receive(:increment).with("robin.sidekiq.default.my_worker.finished")
+        expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.processed")
+        expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.finished")
 
         subject.call("MyWorker", nil, "default", nil) do
           # beep
@@ -18,8 +18,8 @@ describe Robin::Sidekiq::WorkerStats do
 
     context "when something fails" do
       it "increments process and failure count" do
-        expect(Librato).to receive(:increment).with("robin.sidekiq.default.my_worker.processed")
-        expect(Librato).to receive(:increment).with("robin.sidekiq.default.my_worker.failed")
+        expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.processed")
+        expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.failed")
 
         expect do
           subject.call("MyWorker", nil, "default", nil) do

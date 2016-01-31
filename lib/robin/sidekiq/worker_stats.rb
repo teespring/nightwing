@@ -7,7 +7,7 @@ module Robin
         exception = nil
         worker_namespace = metrics.for(queue: queue, worker: worker_class)
 
-        Librato.increment "#{worker_namespace}.processed"
+        client.increment "#{worker_namespace}.processed"
 
         begin
           yield
@@ -16,11 +16,11 @@ module Robin
         end
 
         if exception
-          Librato.increment "#{worker_namespace}.failed"
+          client.increment "#{worker_namespace}.failed"
           raise exception
         end
 
-        Librato.increment "#{worker_namespace}.finished"
+        client.increment "#{worker_namespace}.finished"
       end
     end
   end

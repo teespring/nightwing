@@ -4,7 +4,7 @@ module Robin
     # Sidekiq server middleware for measuring Sidekiq stats
     class Stats < Base
       ##
-      # Sends Sidekiq metrics to Librato then yields
+      # Sends Sidekiq metrics to statsd client then yields
       #
       # @param [Sidekiq::Worker] _worker
       #   The worker the job belongs to.
@@ -17,9 +17,9 @@ module Robin
       def call(_worker, _msg, _queue)
         exception = nil
 
-        Librato.measure "#{namespace}.retries", retries.size
-        Librato.measure "#{namespace}.scheduled", scheduled.size
-        Librato.increment "#{namespace}.processed"
+        client.measure "#{namespace}.retries", retries.size
+        client.measure "#{namespace}.scheduled", scheduled.size
+        client.increment "#{namespace}.processed"
 
         begin
           yield
@@ -28,7 +28,7 @@ module Robin
         end
 
         if exception
-          Librato.increment "#{namespace}.failed"
+          client.increment "#{namespace}.failed"
           raise exception
         end
       end

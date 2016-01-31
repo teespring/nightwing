@@ -5,10 +5,11 @@ require "robin/metric"
 module Robin
   module Sidekiq
     class Base
-      attr_reader :namespace
+      attr_reader :namespace, :client
 
       def initialize(options = {})
         @namespace = options.fetch(:namespace, "robin.sidekiq")
+        @client = options.fetch(:client, Librato)
       end
 
       private
