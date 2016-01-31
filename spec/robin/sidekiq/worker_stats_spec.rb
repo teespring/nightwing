@@ -1,5 +1,5 @@
 require "rspec"
-require "robin/sidekiq/worker_stats"
+require "robin"
 
 describe Robin::Sidekiq::WorkerStats do
   MyWorker = Class.new

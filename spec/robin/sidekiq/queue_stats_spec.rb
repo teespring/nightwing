@@ -1,5 +1,5 @@
 require "rspec"
-require "robin/sidekiq/queue_stats"
+require "robin"
 
 describe Robin::Sidekiq::QueueStats do
   subject { Robin::Sidekiq::QueueStats.new }
