@@ -1,6 +1,8 @@
+require File.expand_path("../lib/robin/version", __FILE__)
+
 Gem::Specification.new do |s|
   s.name        = "robin"
-  s.version     = "0.0.1"
+  s.version     = Robin::VERSION
   s.date        = "2016-01-26"
   s.summary     = "Librato + Sidekiq"
   s.description = "Superior Librato metrics gathering for Sidekiq"
