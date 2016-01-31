@@ -20,14 +20,15 @@ You will need to add the code below to your app. In a typical Rails app, this wo
 # config/initializers/robin.rb
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add Robin::Sidekiq::QueueStats, namespace: 'mycompany.sidekiq'
+    chain.add Robin::Sidekiq::QueueStats, namespace: 'mycompany.sidekiq', client: Librato
   end
 end
 ```
 
 ### Available options
 
-- `namespace`: the string each metric is prefixed with. Defaults to `robin.sidekiq`.
+- `namespace`: the string each metric is prefixed with. Defaults to `"robin.sidekiq"`.
+- `client`: statsd client. Defaults to `Librato`.
 
 ## Metrics
 
