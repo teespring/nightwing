@@ -4,7 +4,7 @@ PATH
     robin (0.0.3)
       activesupport (>= 4.1.0)
       librato-rack (~> 0.4, >= 0.4.0)
-      sidekiq (~> 3.0.0, >= 3.0.0)
+      sidekiq (>= 3.0)
 
 GEM
   remote: https://rubygems.org/
