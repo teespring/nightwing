@@ -1,5 +1,5 @@
 require "librato-rack"
-require "sidekiq"
+require "sidekiq/api"
 require "robin/metric"
 
 module Robin
