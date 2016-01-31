@@ -3,9 +3,9 @@ require "robin/sidekiq/base"
 module Robin
   module Sidekiq
     class WorkerStats < Base
-      def call(worker_class, _job, queue, _redis_pool)
+      def call(worker, _msg, queue)
         exception = nil
-        worker_namespace = metrics.for(queue: queue, worker: worker_class)
+        worker_namespace = metrics.for(queue: queue, worker: worker.class)
 
         client.increment "#{worker_namespace}.processed"
 

@@ -2,6 +2,8 @@ require "rspec"
 require "robin/sidekiq/worker_stats"
 
 describe Robin::Sidekiq::WorkerStats do
+  MyWorker = Class.new
+
   subject { Robin::Sidekiq::WorkerStats.new }
 
   describe "#call" do
@@ -10,7 +12,7 @@ describe Robin::Sidekiq::WorkerStats do
         expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.processed")
         expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.finished")
 
-        subject.call("MyWorker", nil, "default", nil) do
+        subject.call(MyWorker.new, nil, "default") do
           # beep
         end
       end
@@ -22,7 +24,7 @@ describe Robin::Sidekiq::WorkerStats do
         expect(subject.client).to receive(:increment).with("robin.sidekiq.default.my_worker.failed")
 
         expect do
-          subject.call("MyWorker", nil, "default", nil) do
+          subject.call(MyWorker.new, nil, "default") do
             fail "beep"
           end
         end.to raise_error RuntimeError
