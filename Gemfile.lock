@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    robin (0.0.2)
+    robin (0.0.3)
       activesupport (>= 4.1.0)
       librato-rack (~> 0.4, >= 0.4.0)
       sidekiq (~> 2.17, >= 2.17.0)
