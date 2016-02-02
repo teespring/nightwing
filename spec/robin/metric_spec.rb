@@ -1,5 +1,4 @@
-require "rspec"
-require "robin"
+require "spec_helper"
 
 describe Robin::Metric do
   subject { described_class.new("robin") }

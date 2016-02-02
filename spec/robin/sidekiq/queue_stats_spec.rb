@@ -1,5 +1,4 @@
-require "rspec"
-require "robin"
+require "spec_helper"
 
 describe Robin::Sidekiq::QueueStats do
   subject { Robin::Sidekiq::QueueStats.new }
