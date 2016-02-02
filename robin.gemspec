@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "activesupport", ">= 4.1.0"
 
   s.add_development_dependency "rubocop", "~> 0.36"
-  s.add_development_dependency "rspec", "~> 3.4.0"
-  s.add_development_dependency "rspec_junit_formatter", ">= 0.2.3"
+  s.add_development_dependency "rspec", "~> 3.4", ">= 3.4.0"
+  s.add_development_dependency "rspec_junit_formatter", "~> 0.2", ">= 0.2.3"
 end

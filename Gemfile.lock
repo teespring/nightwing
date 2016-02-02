@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    robin (0.0.3)
+    robin (0.0.4)
       activesupport (>= 4.1.0)
       sidekiq (>= 2.6)
 
@@ -62,8 +62,8 @@ PLATFORMS
 
 DEPENDENCIES
   robin!
-  rspec (~> 3.4.0)
-  rspec_junit_formatter (>= 0.2.3)
+  rspec (~> 3.4, >= 3.4.0)
+  rspec_junit_formatter (~> 0.2, >= 0.2.3)
   rubocop (~> 0.36)
 
 BUNDLED WITH
