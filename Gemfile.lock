@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nightwing (0.0.4)
+    nightwing (0.0.5)
       activesupport (>= 4.1.0)
       sidekiq (>= 2.6)
 
