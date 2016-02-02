@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/teespring/robin"
   s.license     = "MIT"
 
-  s.add_runtime_dependency "sidekiq", ">= 3.0"
+  s.add_runtime_dependency "sidekiq", ">= 2.6"
   s.add_runtime_dependency "activesupport", ">= 4.1.0"
 
   s.add_development_dependency "rubocop", "~> 0.36"

@@ -3,7 +3,7 @@ PATH
   specs:
     robin (0.0.3)
       activesupport (>= 4.1.0)
-      sidekiq (>= 3.0)
+      sidekiq (>= 2.6)
 
 GEM
   remote: https://rubygems.org/
