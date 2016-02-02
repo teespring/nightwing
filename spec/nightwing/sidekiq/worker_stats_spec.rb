@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Robin::Sidekiq::WorkerStats do
+describe Nightwing::Sidekiq::WorkerStats do
   MyWorker = Class.new
 
-  subject { Robin::Sidekiq::WorkerStats.new(client: Robin::NilClient.new) }
+  subject { Nightwing::Sidekiq::WorkerStats.new(client: Nightwing::NilClient.new) }
 
   describe "#call" do
     context "when everything just works" do

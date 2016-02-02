@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    robin (0.0.4)
+    nightwing (0.0.4)
       activesupport (>= 4.1.0)
       sidekiq (>= 2.6)
 
@@ -61,7 +61,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  robin!
+  nightwing!
   rspec (~> 3.4, >= 3.4.0)
   rspec_junit_formatter (~> 0.2, >= 0.2.3)
   rubocop (~> 0.36)

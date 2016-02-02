@@ -1,13 +1,13 @@
-# Robin
+# Nightwing
 
-Robin is a Sidekiq middleware for capturing worker metrics including number processed, number of failures, timing, etc.
+Nightwing is a Sidekiq middleware for capturing worker metrics including number processed, number of failures, timing, etc.
 
 ## Installation
 
 Inside your Gemfile, add the following line:
 
 ```Gemfile
-gem 'robin', github: 'teespring/robin'
+gem 'nightwing', github: 'teespring/nightwing'
 ```
 
 ## Configuration
@@ -18,9 +18,9 @@ You will need to add the code below to your app. In a typical Rails app, this wo
 # config/initializers/sidekiq.rb
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add Robin::Sidekiq::Stats, client: Librato
-    chain.add Robin::Sidekiq::QueueStats, client: Librato
-    chain.add Robin::Sidekiq::WorkerStats, client: Librato
+    chain.add Nightwing::Sidekiq::Stats, client: Librato
+    chain.add Nightwing::Sidekiq::QueueStats, client: Librato
+    chain.add Nightwing::Sidekiq::WorkerStats, client: Librato
   end
 end
 ```

@@ -1,4 +1,4 @@
-module Robin
+module Nightwing
   class NilClient
     def increment(*args)
     end

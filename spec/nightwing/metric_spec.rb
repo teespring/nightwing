@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Robin::Metric do
+describe Nightwing::Metric do
   subject { described_class.new("sidekiq") }
 
   it "returns name for queue metric" do

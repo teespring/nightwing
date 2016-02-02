@@ -1,6 +1,7 @@
 ## Unreleased
 
-N/A
+- Renamed project to "Nightwing"
+- Gem name is now "nightwing"
 
 ## 0.0.4
 

@@ -1,6 +1,6 @@
-require "robin/sidekiq/base"
+require "nightwing/sidekiq/base"
 
-module Robin
+module Nightwing
   module Sidekiq
     class WorkerStats < Base
       def call(worker, _msg, queue)

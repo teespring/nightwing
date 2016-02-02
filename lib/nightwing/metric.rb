@@ -1,6 +1,6 @@
 require "active_support/core_ext/string"
 
-module Robin
+module Nightwing
   class Metric
     attr_reader :namespace
 

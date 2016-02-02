@@ -1,6 +1,6 @@
-require "robin/sidekiq/base"
+require "nightwing/sidekiq/base"
 
-module Robin
+module Nightwing
   module Sidekiq
     ##
     # Sidekiq server middleware for measuring Sidekiq stats
