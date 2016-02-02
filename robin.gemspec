@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.name        = "robin"
   s.version     = Robin::VERSION
   s.date        = "2016-01-26"
-  s.summary     = "Librato + Sidekiq"
-  s.description = "Superior Librato metrics gathering for Sidekiq"
+  s.summary     = "Sidekiq metrics gathering"
+  s.description = "Sidekiq metrics gathering"
   s.authors     = ["Chris Ledet"]
   s.email       = "chris.ledet@teespring.com"
   s.files       = `git ls-files`.split

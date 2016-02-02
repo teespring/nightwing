@@ -1,6 +1,6 @@
 # Robin
 
-Sidekiq metrics gathering middleware
+Robin is a Sidekiq middleware for capturing worker metrics including number processed, number of failures, timing, etc.
 
 ## Installation
 
@@ -9,8 +9,6 @@ Inside your Gemfile, add the following line:
 ```Gemfile
 gem 'robin', github: 'teespring/robin'
 ```
-
-This will add the gem as a runtime dependency. Robin automatically loads its server middleware into Sidekiq.
 
 ## Configuration
 
