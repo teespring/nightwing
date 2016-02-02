@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Robin::Sidekiq::QueueStats do
-  subject { Robin::Sidekiq::QueueStats.new }
+  subject { Robin::Sidekiq::QueueStats.new(client: FakeClient.new) }
 
   describe "#call" do
     let(:fake_queue) { Struct.new(:size, :latency).new(0, 0) }

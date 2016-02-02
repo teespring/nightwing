@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Robin::Sidekiq::Stats do
-  subject { Robin::Sidekiq::Stats.new }
+  subject { Robin::Sidekiq::Stats.new(client: FakeClient.new) }
 
   before do
     fake_set = Struct.new(:size).new(1)
