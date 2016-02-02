@@ -1,6 +1,7 @@
 require "librato-rack"
 require "sidekiq/api"
 require "robin/metric"
+require "robin/nil_client"
 
 module Robin
   module Sidekiq
@@ -9,7 +10,7 @@ module Robin
 
       def initialize(options = {})
         @namespace = options.fetch(:namespace, "robin.sidekiq")
-        @client = options.fetch(:client, Librato)
+        @client = options.fetch(:client, Robin::NilClient.new)
       end
 
       private
