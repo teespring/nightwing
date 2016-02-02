@@ -1,4 +1,4 @@
-# Nightwing
+# Nightwing [![Gem Version](https://badge.fury.io/rb/nightwing.svg)](https://badge.fury.io/rb/nightwing)
 
 Nightwing is a Sidekiq middleware for capturing worker metrics including number processed, number of failures, timing, etc.
 
@@ -7,7 +7,7 @@ Nightwing is a Sidekiq middleware for capturing worker metrics including number 
 Inside your Gemfile, add the following line:
 
 ```Gemfile
-gem 'nightwing', github: 'teespring/nightwing'
+gem 'nightwing'
 ```
 
 ## Configuration
