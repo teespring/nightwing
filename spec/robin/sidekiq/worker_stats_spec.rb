@@ -3,7 +3,7 @@ require "spec_helper"
 describe Robin::Sidekiq::WorkerStats do
   MyWorker = Class.new
 
-  subject { Robin::Sidekiq::WorkerStats.new(client: FakeClient.new) }
+  subject { Robin::Sidekiq::WorkerStats.new(client: Robin::NilClient.new) }
 
   describe "#call" do
     context "when everything just works" do
