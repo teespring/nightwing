@@ -6,7 +6,7 @@ module Robin
     # Sidekiq server middleware for measuring Sidekiq queues
     class QueueStats < Base
       ##
-      # Sends Sidekiq queue metrics to Librato then yields
+      # Sends Sidekiq queue metrics to client then yields
       #
       # @param [Sidekiq::Worker] _worker
       #   The worker the job belongs to.

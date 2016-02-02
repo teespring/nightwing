@@ -1,4 +1,3 @@
-require "librato-rack"
 require "sidekiq/api"
 require "robin/metric"
 require "robin/nil_client"
