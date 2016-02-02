@@ -18,7 +18,9 @@ You will need to add the code below to your app. In a typical Rails app, this wo
 # config/initializers/sidekiq.rb
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add Robin::Sidekiq::QueueStats, namespace: 'mycompany.sidekiq', client: Librato
+    chain.add Robin::Sidekiq::Stats, client: Librato
+    chain.add Robin::Sidekiq::QueueStats, client: Librato
+    chain.add Robin::Sidekiq::WorkerStats, client: Librato
   end
 end
 ```
