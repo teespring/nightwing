@@ -27,8 +27,8 @@ end
 
 ### Available options
 
+- `client`: Librato or statsd client. Required.
 - `namespace`: the string each metric is prefixed with. Defaults to `"robin.sidekiq"`.
-- `client`: statsd client. Defaults to `Librato`.
 
 ## Metrics
 
