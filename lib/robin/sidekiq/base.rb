@@ -9,7 +9,7 @@ module Robin
       attr_reader :namespace, :client
 
       def initialize(options = {})
-        @namespace = options.fetch(:namespace, "robin.sidekiq")
+        @namespace = options.fetch(:namespace, "sidekiq")
         @client = options.fetch(:client, Robin::NilClient.new)
       end
 

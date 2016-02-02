@@ -12,9 +12,9 @@ describe Robin::Sidekiq::Stats do
   describe "#call" do
     context "when everything just works" do
       it "increments process count" do
-        expect(subject.client).to receive(:measure).with("robin.sidekiq.retries", 1)
-        expect(subject.client).to receive(:measure).with("robin.sidekiq.scheduled", 1)
-        expect(subject.client).to receive(:increment).with("robin.sidekiq.processed")
+        expect(subject.client).to receive(:measure).with("sidekiq.retries", 1)
+        expect(subject.client).to receive(:measure).with("sidekiq.scheduled", 1)
+        expect(subject.client).to receive(:increment).with("sidekiq.processed")
 
         subject.call(nil, nil, nil) do
           # beep
@@ -24,10 +24,10 @@ describe Robin::Sidekiq::Stats do
 
     context "when something fails" do
       it "increments process and failure count" do
-        expect(subject.client).to receive(:measure).with("robin.sidekiq.retries", 1)
-        expect(subject.client).to receive(:measure).with("robin.sidekiq.scheduled", 1)
-        expect(subject.client).to receive(:increment).with("robin.sidekiq.processed")
-        expect(subject.client).to receive(:increment).with("robin.sidekiq.failed")
+        expect(subject.client).to receive(:measure).with("sidekiq.retries", 1)
+        expect(subject.client).to receive(:measure).with("sidekiq.scheduled", 1)
+        expect(subject.client).to receive(:increment).with("sidekiq.processed")
+        expect(subject.client).to receive(:increment).with("sidekiq.failed")
 
         expect do
           subject.call(nil, nil, nil) do
