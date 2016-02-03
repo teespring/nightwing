@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add new Profiler middleware
+
 ## 0.0.5
 
 - Renamed project to "Nightwing"
