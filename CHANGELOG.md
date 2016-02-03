@@ -1,6 +1,7 @@
 ## Unreleased
 
 - Add new Profiler middleware
+- Add a copy of the MIT license
 
 ## 0.0.5
 
