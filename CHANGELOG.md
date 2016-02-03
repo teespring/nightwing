@@ -3,6 +3,11 @@
 - Add new Profiler middleware
 - Add a copy of the MIT license
 
+**New Metrics**
+
+- `sidekiq.<queue>.<worker>.time`
+- `sidekiq.<queue>.<worker>.retried`
+
 ## 0.0.5
 
 - Renamed project to "Nightwing"
