@@ -17,7 +17,6 @@ module Nightwing
       # @param [String] queue
       #   The current queue.
       def call(_worker, _msg, queue)
-        exception = nil
         sidekiq_queue = ::Sidekiq::Queue.new(queue)
         queue_namespace = metrics.for(queue: queue)
 
@@ -27,13 +26,9 @@ module Nightwing
 
         begin
           yield
-        rescue => e
-          exception = e
-        end
-
-        if exception
+        rescue
           client.increment "#{queue_namespace}.failed"
-          raise exception
+          raise
         end
       end
     end

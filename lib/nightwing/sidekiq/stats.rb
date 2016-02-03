@@ -17,21 +17,15 @@ module Nightwing
       # @param [String] _queue
       #   The current queue.
       def call(_worker, _msg, _queue)
-        exception = nil
-
         client.measure "#{namespace}.retries", retries.size
         client.measure "#{namespace}.scheduled", scheduled.size
         client.increment "#{namespace}.processed"
 
         begin
           yield
-        rescue => e
-          exception = e
-        end
-
-        if exception
+        rescue
           client.increment "#{namespace}.failed"
-          raise exception
+          raise
         end
       end
 

@@ -4,20 +4,15 @@ module Nightwing
   module Sidekiq
     class WorkerStats < Base
       def call(worker, _msg, queue)
-        exception = nil
         worker_namespace = metrics.for(queue: queue, worker: worker.class)
 
         client.increment "#{worker_namespace}.processed"
 
         begin
           yield
-        rescue => e
-          exception = e
-        end
-
-        if exception
+        rescue
           client.increment "#{worker_namespace}.failed"
-          raise exception
+          raise
         end
 
         client.increment "#{worker_namespace}.finished"
