@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Nightwing::Sidekiq::Profiler do
-  subject { Nightwing::Sidekiq::Profiler.new(client: Nightwing::NilClient.new) }
+  subject { Nightwing::Sidekiq::Profiler.new(client: Nightwing::DebugClient.new) }
 
   let(:time_in_ms) { 55 }
   let(:buffer) { 5 }

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Nightwing::Sidekiq::Stats do
-  subject { Nightwing::Sidekiq::Stats.new(client: Nightwing::NilClient.new) }
+  subject { Nightwing::Sidekiq::Stats.new(client: Nightwing::DebugClient.new) }
 
   before do
     fake_set = Struct.new(:size).new(1)

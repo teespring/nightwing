@@ -1,5 +1,5 @@
 module Nightwing
-  class NilClient
+  class DebugClient
     def increment(*args)
     end
 

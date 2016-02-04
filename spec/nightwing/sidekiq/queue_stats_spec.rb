@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Nightwing::Sidekiq::QueueStats do
-  subject { Nightwing::Sidekiq::QueueStats.new(client: Nightwing::NilClient.new) }
+  subject { Nightwing::Sidekiq::QueueStats.new(client: Nightwing::DebugClient.new) }
 
   describe "#call" do
     let(:fake_queue) { Struct.new(:size, :latency).new(0, 0) }

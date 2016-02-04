@@ -1,6 +1,6 @@
 require "sidekiq/api"
 require "nightwing/metric"
-require "nightwing/nil_client"
+require "nightwing/debug_client"
 
 module Nightwing
   module Sidekiq
@@ -9,7 +9,7 @@ module Nightwing
 
       def initialize(options = {})
         @namespace = options.fetch(:namespace, "sidekiq")
-        @client = options.fetch(:client, Nightwing::NilClient.new)
+        @client = options.fetch(:client, Nightwing::DebugClient.new)
       end
 
       private
