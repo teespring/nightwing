@@ -35,6 +35,8 @@ end
 - `debug`: (optional) boolean value to enabling or disabling debug mode.
 - `logger`: (optional) An object that responds to `#info`, `#debug`, and `#warn`. Used when debug mode is enabled.
 
+When debug mode is turned on, Nightwing will output the metrics into a parsable format. The output destination is determined by the `:logger` option. If no logger is given then we send the debugging output to STDOUT.
+
 ## Metrics
 
 Below are the metrics reported to Librato from the Sidekiq middleware
@@ -51,6 +53,8 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `sidekiq.<queue>.processed`: number of times middleware called for given queue
 - `sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
 - `sidekiq.<queue>.time`: how long jobs took to process (in milliseconds)
+- `sidekiq.<queue>.gc.count`: number of times the Ruby GC kicked off
+- `sidekiq.<queue>.memory_used`: the different in the process memory after jobs were processed (in bytes)
 
 ¹: the difference between now and when the oldest job was enqueued (given in seconds)
 
@@ -61,3 +65,5 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `sidekiq.<queue>.<worker>.finished`: number of successful worker jobs
 - `sidekiq.<queue>.<worker>.time`: how long given worker took to process (in milliseconds)
 - `sidekiq.<queue>.<worker>.retried`: number of times a given worker retried
+- `sidekiq.<queue>.<worker>.gc.count`: number of times the Ruby GC kicked off
+- `sidekiq.<queue>.<worker>.memory_used`: the different in the process memory after jobs were processed (in bytes)
