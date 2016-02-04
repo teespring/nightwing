@@ -23,6 +23,7 @@ Sidekiq.configure_server do |config|
     chain.add Nightwing::Sidekiq::Stats, client: Librato
     chain.add Nightwing::Sidekiq::QueueStats, client: Librato
     chain.add Nightwing::Sidekiq::WorkerStats, client: Librato
+    chain.add Nightwing::Sidekiq::Profiler, client: Librato
   end
 end
 ```
@@ -30,7 +31,9 @@ end
 ### Available options
 
 - `client`: Librato or statsd client. Required.
-- `namespace`: the string each metric is prefixed with. Defaults to `"sidekiq"`.
+- `namespace`: (optional) the string each metric is prefixed with. Defaults to `"sidekiq"`.
+- `debug`: (optional) boolean value to enabling or disabling debug mode.
+- `logger`: (optional) An object that responds to `#info`, `#debug`, and `#warn`. Used when debug mode is enabled.
 
 ## Metrics
 
