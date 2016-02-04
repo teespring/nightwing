@@ -30,12 +30,14 @@ end
 
 ### Available options
 
-- `client`: Librato or statsd client. Required.
-- `namespace`: (optional) the string each metric is prefixed with. Defaults to `"sidekiq"`.
-- `debug`: (optional) boolean value to enabling or disabling debug mode.
-- `logger`: (optional) An object that responds to `#info`, `#debug`, and `#warn`. Used when debug mode is enabled.
+| Name      | Description                    | Required? | Default           |
+|-----------|--------------------------------|-----------|-------------------|
+| client    | Librato or statsd client       | yes       | N/A               |
+| namespace | Prefix for each metric         | no        | "sidekiq"         |
+| debug     | Enable for verbose logging     | no        | false             |
+| logger    | Logger instance for debug mode | no        | Nightwing::Logger |
 
-When debug mode is turned on, Nightwing will output the metrics into a parsable format. The output destination is determined by the `:logger` option. If no logger is given then we send the debugging output to STDOUT.
+When debug mode is turned on, Nightwing will output the metrics into a parsable format. The output destination is determined by the logger. If no logger is given then we send the debugging output to STDOUT.
 
 ## Metrics
 
