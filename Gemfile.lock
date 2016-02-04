@@ -3,25 +3,38 @@ PATH
   specs:
     nightwing (0.0.5)
       activesupport (>= 4.1.0)
+      oink (= 0.10.1)
       sidekiq (>= 2.6)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.5.1)
+    activemodel (4.2.5)
+      activesupport (= 4.2.5)
+      builder (~> 3.1)
+    activerecord (4.2.5)
+      activemodel (= 4.2.5)
+      activesupport (= 4.2.5)
+      arel (~> 6.0)
+    activesupport (4.2.5)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    arel (6.0.3)
     ast (2.2.0)
     builder (3.2.2)
     concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
     diff-lcs (1.2.5)
+    hodel_3000_compliant_logger (0.1.1)
     i18n (0.7.0)
     json (1.8.3)
     minitest (5.8.4)
+    oink (0.10.1)
+      activerecord
+      hodel_3000_compliant_logger
     parser (2.3.0.2)
       ast (~> 2.2)
     powerpack (0.1.1)
