@@ -19,13 +19,13 @@ module Nightwing
           total_time = ((Time.now - started_at) * 1_000).round
           total_gc_count = ::GC.count - initial_gc_count
 
-          client.timing "#{queue_namespace}.time", total_time
-          client.measure "#{queue_namespace}.memory_used", memory_delta_in_bytes
-          client.measure "#{queue_namespace}.gc.count", total_gc_count
-
           client.timing "#{worker_namespace}.time", total_time
           client.measure "#{worker_namespace}.memory_used", memory_delta_in_bytes
           client.measure "#{worker_namespace}.gc.count", total_gc_count
+
+          client.timing "#{queue_namespace}.time", total_time
+          client.measure "#{queue_namespace}.memory_used", memory_delta_in_bytes
+          client.measure "#{queue_namespace}.gc.count", total_gc_count
         end
       end
 
