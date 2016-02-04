@@ -9,6 +9,11 @@ describe Nightwing::Sidekiq::Profiler do
   describe "#call" do
     it "profiles the worker" do
       expect(subject.client).to receive(:timing) do |*args|
+        expect(args.first).to eq("sidekiq.default.time")
+        expect(args.last).to be_between(0, time_in_ms + buffer)
+      end
+
+      expect(subject.client).to receive(:timing) do |*args|
         expect(args.first).to eq("sidekiq.default.foo.time")
         expect(args.last).to be_between(0, time_in_ms + buffer)
       end

@@ -6,6 +6,7 @@
 **New Metrics**
 
 - `sidekiq.<queue>.<worker>.time`
+- `sidekiq.<queue>.time`
 - `sidekiq.<queue>.<worker>.retried`
 
 ## 0.0.5

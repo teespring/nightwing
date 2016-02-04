@@ -45,6 +45,7 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `sidekiq.<queue>.latency`: latency for given queue¹
 - `sidekiq.<queue>.processed`: number of times middleware called for given queue
 - `sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
+- `sidekiq.<queue>.time`: how long jobs took to process (in milliseconds)
 
 ¹: the difference between now and when the oldest job was enqueued (given in seconds)
 
