@@ -14,6 +14,8 @@ gem 'nightwing'
 
 You will need to add the code below to your app. In a typical Rails app, this would go into an initializer.
 
+Please note that you must require your own librato-rack gem and supply it to Nightwing
+
 ```ruby
 # config/initializers/sidekiq.rb
 Sidekiq.configure_server do |config|
