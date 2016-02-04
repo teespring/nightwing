@@ -6,7 +6,7 @@ module Nightwing
     class Profiler < Base
       def call(worker, _msg, queue)
         queue_namespace = metrics.for(queue: queue)
-        worker_namespace = metrics.for(queue: queue, worker: worker)
+        worker_namespace = metrics.for(queue: queue, worker: worker.class)
 
         begin
           started_at = Time.now

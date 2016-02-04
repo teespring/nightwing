@@ -9,7 +9,7 @@ describe Nightwing::Sidekiq::Profiler do
   describe "#call" do
     it "records time" do
       expect(subject.client).to receive(:timing) do |*args|
-        expect(args.first).to eq("sidekiq.default.foo.time")
+        expect(args.first).to eq("sidekiq.default.my_worker.time")
         expect(args.last).to be_between(0, time_in_ms + buffer)
       end
 
@@ -18,18 +18,18 @@ describe Nightwing::Sidekiq::Profiler do
         expect(args.last).to be_between(0, time_in_ms + buffer)
       end
 
-      subject.call("foo", nil, "default") do
+      subject.call(MyWorker.new, nil, "default") do
         sleep time_in_ms / 1_000 # sleep for ~55ms
       end
     end
 
     it "records memory" do
-      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.memory_used", 0).and_call_original
-      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.gc.count", 0).and_call_original
+      expect(subject.client).to receive(:measure).with("sidekiq.default.my_worker.memory_used", 0).and_call_original
+      expect(subject.client).to receive(:measure).with("sidekiq.default.my_worker.gc.count", 0).and_call_original
       expect(subject.client).to receive(:measure).with("sidekiq.default.memory_used", 0).and_call_original
       expect(subject.client).to receive(:measure).with("sidekiq.default.gc.count", 0).and_call_original
 
-      subject.call("foo", nil, "default") do
+      subject.call(MyWorker.new, nil, "default") do
         # beep
       end
     end

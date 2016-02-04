@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe Nightwing::Sidekiq::WorkerStats do
-  MyWorker = Class.new
-
   subject { Nightwing::Sidekiq::WorkerStats.new(client: Nightwing::DebugClient.new) }
 
   describe "#call" do
