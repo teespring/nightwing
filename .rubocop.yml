@@ -12,6 +12,8 @@ StringLiterals:
   EnforcedStyle: double_quotes
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
 Style/SignalException:
   Enabled: false
 Style/GuardClause:

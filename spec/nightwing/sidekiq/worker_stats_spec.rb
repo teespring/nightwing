@@ -8,8 +8,8 @@ describe Nightwing::Sidekiq::WorkerStats do
   describe "#call" do
     context "when everything just works" do
       it "increments process count" do
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed")
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.finished")
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed").and_call_original
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.finished").and_call_original
 
         subject.call(MyWorker.new, {}, "default") do
           # beep
@@ -19,8 +19,8 @@ describe Nightwing::Sidekiq::WorkerStats do
 
     context "when something fails" do
       it "increments process and failure count" do
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed")
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.failed")
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed").and_call_original
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.failed").and_call_original
 
         expect do
           subject.call(MyWorker.new, {}, "default") do
@@ -32,9 +32,9 @@ describe Nightwing::Sidekiq::WorkerStats do
 
     context "when being retried" do
       it "increments process and retried count" do
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed")
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.retried")
-        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.finished")
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.processed").and_call_original
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.retried").and_call_original
+        expect(subject.client).to receive(:increment).with("sidekiq.default.my_worker.finished").and_call_original
 
         subject.call(MyWorker.new, { "retry" => 0, "retry_count" => 2 }, "default") do
           # beep

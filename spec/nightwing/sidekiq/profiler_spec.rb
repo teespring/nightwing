@@ -24,10 +24,10 @@ describe Nightwing::Sidekiq::Profiler do
     end
 
     it "records memory" do
-      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.memory_used", 0)
-      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.gc.count", 0)
-      expect(subject.client).to receive(:measure).with("sidekiq.default.memory_used", 0)
-      expect(subject.client).to receive(:measure).with("sidekiq.default.gc.count", 0)
+      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.memory_used", 0).and_call_original
+      expect(subject.client).to receive(:measure).with("sidekiq.default.foo.gc.count", 0).and_call_original
+      expect(subject.client).to receive(:measure).with("sidekiq.default.memory_used", 0).and_call_original
+      expect(subject.client).to receive(:measure).with("sidekiq.default.gc.count", 0).and_call_original
 
       subject.call("foo", nil, "default") do
         # beep
