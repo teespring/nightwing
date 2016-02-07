@@ -1,4 +1,5 @@
 require "nightwing/version"
+require "nightwing/instrumentation/active_record"
 require "nightwing/sidekiq/stats"
 require "nightwing/sidekiq/queue_stats"
 require "nightwing/sidekiq/worker_stats"
