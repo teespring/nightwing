@@ -1,3 +1,11 @@
+## 0.2.0
+
+- Renamed memory_used metric so that we can utilize the memory namespace for additional metrics
+
+**Renamed Metrics**
+
+- `sidekiq.<queue>.<worker>.memory_used` to `sidekiq.<queue>.<worker>.memory.delta`
+
 ## 0.1.0
 
 - Add new Profiler middleware

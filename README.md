@@ -56,7 +56,7 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `sidekiq.<queue>.failed`: number of jobs in given queue that raised an error
 - `sidekiq.<queue>.time`: how long jobs took to process (in milliseconds)
 - `sidekiq.<queue>.gc.count`: number of times the Ruby GC kicked off
-- `sidekiq.<queue>.memory_used`: the different in the process memory after jobs were processed (in bytes)
+- `sidekiq.<queue>.memory.delta`: the different in the process memory after jobs were processed (in bytes)
 
 ¹: the difference between now and when the oldest job was enqueued (given in seconds)
 
@@ -68,4 +68,4 @@ Below are the metrics reported to Librato from the Sidekiq middleware
 - `sidekiq.<queue>.<worker>.time`: how long given worker took to process (in milliseconds)
 - `sidekiq.<queue>.<worker>.retried`: number of times a given worker retried
 - `sidekiq.<queue>.<worker>.gc.count`: number of times the Ruby GC kicked off
-- `sidekiq.<queue>.<worker>.memory_used`: the different in the process memory after jobs were processed (in bytes)
+- `sidekiq.<queue>.<worker>.memory.delta`: the different in the process memory after jobs were processed (in bytes)
