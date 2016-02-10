@@ -1,4 +1,3 @@
-require "nightwing/sidekiq/profiler"
 require "oink"
 
 module Nightwing
