@@ -28,6 +28,14 @@ Sidekiq.configure_server do |config|
 end
 ```
 
+```ruby
+# config/initializers/instrumentation.rb
+ActiveSupport::Notifications.subscribe(
+  'sql.active_record',
+  Nightwing::Instrumentation::ActiveRecord.new(client: Librato),
+)
+```
+
 ### Available options
 
 | Name      | Description                    | Required? | Default           |
@@ -39,7 +47,13 @@ end
 
 When debug mode is turned on, Nightwing will output the metrics into a parsable format. The output destination is determined by the logger. If no logger is given then we send the debugging output to STDOUT.
 
-## Metrics
+## Instrumentation Metrics
+
+Below are the metrics reported to Librato from instrumentation classes
+
+- `instrumentation.sql.<table>.<action>.time`: how long the database query took to complete
+
+## Sidekiq Metrics
 
 Below are the metrics reported to Librato from the Sidekiq middleware
 
