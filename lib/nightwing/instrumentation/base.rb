@@ -1,17 +1,16 @@
-require "sidekiq/api"
 require "nightwing/base"
 
 module Nightwing
-  module Sidekiq
+  module Instrumentation
     class Base < Nightwing::Base
       def initialize(options = {})
-        super options.merge(namespace: "sidekiq")
+        super default_options.merge(options)
       end
 
       private
 
-      def metrics
-        @_metrics ||= Nightwing::Metric.new(namespace)
+      def default_options
+        { namespace: "instrumentation" }
       end
     end
   end

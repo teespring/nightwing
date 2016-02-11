@@ -6,6 +6,10 @@
 
 - `sidekiq.<queue>.<worker>.memory_used` to `sidekiq.<queue>.<worker>.memory.delta`
 
+**New Metrics**
+
+- `instrumentation.sql.<table>.<action>.time`
+
 ## 0.1.0
 
 - Add new Profiler middleware
