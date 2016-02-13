@@ -1,3 +1,22 @@
+## Unreleased
+
+- New profiling extension for Redis
+- New profiling extension for Memcache (via Dalli)
+- Added new `Nightwing.client` to global statds client configuration
+- Internal setup refactor
+- Metric changes are listed below
+
+**Renamed Metrics**
+
+- `instrumentation.sql.<table>.<action>.time` to `sql.<table>.<action>.time`
+
+**New Metrics**
+
+- `memcache.command.time`
+- `memcache.command.<command>.time`
+- `redis.command.time`
+- `redis.command.<command>.time`
+
 ## 0.2.0
 
 - Renamed memory_used metric so that we can utilize the memory namespace for additional metrics
