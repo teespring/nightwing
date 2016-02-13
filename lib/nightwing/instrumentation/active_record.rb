@@ -13,8 +13,15 @@ module Nightwing
         end
 
         if table
+          action.downcase!
+          table.downcase!
           query_time = (finished - started) * 1_000
-          Nightwing.client.timing("sql.#{table.downcase}.#{action.downcase}.time", query_time.round)
+
+          Nightwing.client.timing "sql.#{action}.time", query_time.round
+          Nightwing.client.timing "sql.#{action}.#{table}.time", query_time.round
+
+          Nightwing.client.increment "sql.#{action}.processed"
+          Nightwing.client.increment "sql.#{action}.#{table}.processed"
         end
       end
 
