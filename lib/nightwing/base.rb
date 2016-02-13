@@ -1,5 +1,4 @@
 require "nightwing/metric"
-require "nightwing/debug_client"
 require "nightwing/logger"
 require "nightwing/client_logger"
 
@@ -9,7 +8,7 @@ module Nightwing
 
     def initialize(options = {})
       @namespace = options.fetch(:namespace)
-      @client = options.fetch(:client, Nightwing::DebugClient.new)
+      @client = options.fetch(:client, Nightwing.client)
       @logger = options.fetch(:logger, Nightwing::Logger.new)
       @debug = options.fetch(:debug, false)
     end
