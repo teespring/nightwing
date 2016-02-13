@@ -10,9 +10,13 @@ Metrics/LineLength:
   Max: 120
 StringLiterals:
   EnforcedStyle: double_quotes
+Style/Alias:
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/IfUnlessModifier:
+  Enabled: false
+Style/ModuleFunction:
   Enabled: false
 Style/PerlBackrefs:
   Enabled: false
