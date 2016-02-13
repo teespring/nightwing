@@ -1,6 +1,7 @@
 require "nightwing/version"
 require "nightwing/debug_client"
 require "nightwing/instrumentation/active_record"
+require "nightwing/sidekiq/base"
 require "nightwing/sidekiq/stats"
 require "nightwing/sidekiq/queue_stats"
 require "nightwing/sidekiq/worker_stats"

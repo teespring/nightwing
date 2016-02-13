@@ -30,10 +30,9 @@ end
 
 ```ruby
 # config/initializers/instrumentation.rb
-ActiveSupport::Notifications.subscribe(
-  'sql.active_record',
-  Nightwing::Instrumentation::ActiveRecord.new(client: Librato),
-)
+Nightwing.client = Librato
+
+ActiveSupport::Notifications.subscribe('sql.active_record', Nightwing::Instrumentation::ActiveRecord.new)
 ```
 
 ### Available options
@@ -51,7 +50,7 @@ When debug mode is turned on, Nightwing will output the metrics into a parsable 
 
 Below are the metrics reported to Librato from instrumentation classes
 
-- `instrumentation.sql.<table>.<action>.time`: how long the database query took to complete
+- `sql.<table>.<action>.time`: how long the database query took to complete
 
 ## Sidekiq Metrics
 

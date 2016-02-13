@@ -1,10 +1,8 @@
-require "nightwing/instrumentation/base"
-
 module Nightwing
   module Instrumentation
     # This code was influenced by Matt Aimonetti's awesome blog post: "Practical Guide to StatsD/Graphite Monitoring"
     # Check it out: https://matt.aimonetti.net/posts/2013/06/26/practical-guide-to-graphite-monitoring
-    class ActiveRecord < Base
+    class ActiveRecord
       SQL_INSERT_DELETE_PARSER_REGEXP = /^(\w+)\s(\w+)\s\W*(\w+)/
       SQL_SELECT_REGEXP = /select .*? FROM \W*(\w+)/i
       SQL_UPDATE_REGEXP = /update \W*(\w+)/i
@@ -16,7 +14,7 @@ module Nightwing
 
         if table
           query_time = (finished - started) * 1_000
-          client.timing("#{namespace}.sql.#{table.downcase}.#{action.downcase}.time", query_time.round)
+          Nightwing.client.timing("sql.#{table.downcase}.#{action.downcase}.time", query_time.round)
         end
       end
 
