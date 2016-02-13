@@ -6,8 +6,12 @@ Dalli::Client.class_eval do
     ensure
       time_ellasped = (Time.now - start_time) * 1_000
       command = args.first.is_a?(Array) ? args[0][0] : args.first
+
       Nightwing.client.timing "memcache.command.time", time_ellasped
       Nightwing.client.timing "memcache.command.#{command}.time", time_ellasped
+
+      Nightwing.client.increment "memcache.command.processed"
+      Nightwing.client.increment "memcache.command.#{command}.processed"
     end
 
     result

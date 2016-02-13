@@ -31,6 +31,9 @@ describe "Redis extensions" do
         expect(args.last > 0).to be(true)
       end
 
+      expect(Nightwing.client).to receive(:increment).with("redis.command.processed")
+      expect(Nightwing.client).to receive(:increment).with("redis.command.foo.processed")
+
       subject.call :foo
     end
 

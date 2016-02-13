@@ -31,6 +31,9 @@ describe "Dalli extensions" do
         expect(args.last > 0).to be(true)
       end
 
+      expect(Nightwing.client).to receive(:increment).with("memcache.command.processed")
+      expect(Nightwing.client).to receive(:increment).with("memcache.command.foo.processed")
+
       subject.perform :foo
     end
 
