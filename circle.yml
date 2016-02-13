@@ -1,5 +1,14 @@
-test:
-  pre:
-    - bundle exec rubocop
+dependencies:
   override:
-    - bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+    - 'rvm-exec 2.1.7 bundle install'
+    - 'rvm-exec 2.2.3 bundle install'
+    - 'rvm-exec 2.3.0 bundle install'
+
+test:
+  override:
+    - 'rvm-exec 2.1.7 bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml'
+    - 'rvm-exec 2.1.7 bundle exec rubocop'
+    - 'rvm-exec 2.2.3 bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml'
+    - 'rvm-exec 2.2.3 bundle exec rubocop'
+    - 'rvm-exec 2.3.0 bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml'
+    - 'rvm-exec 2.3.0 bundle exec rubocop'
