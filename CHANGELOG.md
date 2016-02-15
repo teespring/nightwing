@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.3.0
+
 - New profiling extension for Redis
 - New profiling extension for Memcache (via Dalli)
 - Added new `Nightwing.client` to global statds client configuration
