@@ -28,13 +28,25 @@ Sidekiq.configure_server do |config|
 end
 ```
 
+To gather database metrics:
+
 ```ruby
 # config/initializers/instrumentation.rb
-ActiveSupport::Notifications.subscribe(
-  'sql.active_record',
-  Nightwing::Instrumentation::ActiveRecord.new(client: Librato),
-)
+Nightwing.client = Librato
+
+ActiveSupport::Notifications.subscribe('sql.active_record', Nightwing::Instrumentation::ActiveRecord.new)
 ```
+
+To gather Redis and memcache metrics:
+
+```ruby
+# config/initializers/instrumentation.rb
+Nightwing.client = Librato
+
+require 'nightwing/extensions/dalli' # dalli gem required
+require 'nightwing/extensions/redis' # redis gem required
+```
+
 
 ### Available options
 
@@ -51,7 +63,20 @@ When debug mode is turned on, Nightwing will output the metrics into a parsable 
 
 Below are the metrics reported to Librato from instrumentation classes
 
-- `instrumentation.sql.<table>.<action>.time`: how long the database query took to complete
+- `sql.<table>.<action>.time`: how long the database query took to complete
+
+## Extensions Metrics
+
+Below are the metrics reported to Librato from instrumentation classes
+
+- `redis.command.processed`: number of times overall command was called
+- `redis.command.time`: response time (in ms) for all commands
+- `redis.command.<command>.processed`: number of times the command was called
+- `redis.command.<command>.time`: response time (in ms) for command
+- `memcache.command.processed`: number of times overall command was called
+- `memcache.command.time`: response time (in ms) for all commands
+- `memcache.command.<command>.processed`: number of times the command was called
+- `memcache.command.<command>.time`: response time (in ms) for command
 
 ## Sidekiq Metrics
 
