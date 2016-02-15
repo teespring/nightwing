@@ -14,8 +14,12 @@
 
 - `memcache.command.time`
 - `memcache.command.<command>.time`
+- `memcache.command.processed`
+- `memcache.command.<command>.processed`
 - `redis.command.time`
 - `redis.command.<command>.time`
+- `redis.command.processed`
+- `redis.command.<command>.processed`
 
 ## 0.2.0
 
