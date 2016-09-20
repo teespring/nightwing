@@ -6,13 +6,14 @@ require "nightwing/client_logger"
 module Nightwing
   module Sidekiq
     class Base
-      attr_reader :namespace, :logger
+      attr_reader :namespace, :logger, :disabled_metrics
 
       def initialize(options = {})
         @namespace = options.fetch(:namespace, "sidekiq")
         @client = options.fetch(:client, Nightwing.client)
         @logger = options.fetch(:logger, Nightwing::Logger.new)
         @debug = options.fetch(:debug, false)
+        @disabled_metrics = options.fetch(:disabled_metrics, [])
       end
 
       def client

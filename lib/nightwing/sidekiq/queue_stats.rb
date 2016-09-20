@@ -20,8 +20,11 @@ module Nightwing
         sidekiq_queue = ::Sidekiq::Queue.new(queue)
         queue_namespace = metrics.for(queue: queue)
 
-        client.measure "#{queue_namespace}.size", sidekiq_queue.size
-        client.measure "#{queue_namespace}.latency", sidekiq_queue.latency
+        unless disabled_metrics.include? :queue_depth
+          QueueMonitoring.new(metrics_collector: client, namespace: namespace)
+                         .report_depth_metrics_for_queues([sidekiq_queue])
+        end
+
         client.increment "#{queue_namespace}.processed"
 
         begin
