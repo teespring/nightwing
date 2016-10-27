@@ -1,8 +1,8 @@
 Dalli::Client.class_eval do
-  def perform_with_profiling(*args)
+  def perform_with_profiling(*args, &block)
     begin
       start_time = Time.now
-      result = perform_without_profiling(*args)
+      result = perform_without_profiling(*args, &block)
     ensure
       time_ellasped = (Time.now - start_time) * 1_000
       command = args.first.is_a?(Array) ? args[0][0] : args.first
